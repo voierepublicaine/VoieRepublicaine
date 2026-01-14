@@ -8,6 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --blue:#0b1c2d;
+  --red:#c1121f;
+  --white:#ffffff;
+}
+
 *{
   margin:0;
   padding:0;
@@ -16,8 +22,8 @@
 }
 
 body{
-  background:#ffffff;
-  color:#0b1c2d;
+  background:var(--white);
+  color:var(--blue);
 }
 
 /* ===== NAV BAR ===== */
@@ -26,20 +32,32 @@ nav{
   top:0;
   width:100%;
   background:white;
-  border-bottom:1px solid #e5e5e5;
-  padding:16px 32px;
+  border-bottom:3px solid var(--blue);
+  padding:14px 32px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   z-index:1000;
 }
 
+/* LOGO */
 .logo{
-  font-size:22px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.logo img{
+  height:48px;
+}
+
+.logo span{
+  font-size:20px;
   font-weight:700;
   letter-spacing:1px;
 }
 
+/* MENU */
 nav ul{
   list-style:none;
   display:flex;
@@ -48,23 +66,41 @@ nav ul{
 
 nav ul li a{
   text-decoration:none;
-  color:#0b1c2d;
-  font-weight:500;
+  color:var(--blue);
+  font-weight:600;
   font-size:14px;
+  position:relative;
 }
 
+nav ul li a::after{
+  content:"";
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:0;
+  height:2px;
+  background:var(--red);
+  transition:.3s;
+}
+
+nav ul li a:hover::after{
+  width:100%;
+}
+
+/* CTA */
 .cta{
-  padding:10px 18px;
-  border:2px solid #0b1c2d;
+  padding:10px 22px;
+  border:2px solid var(--red);
+  color:var(--red);
   text-decoration:none;
   font-size:13px;
-  font-weight:600;
-  color:#0b1c2d;
+  font-weight:700;
+  letter-spacing:1px;
   transition:.3s;
 }
 
 .cta:hover{
-  background:#0b1c2d;
+  background:var(--red);
   color:white;
 }
 
@@ -72,7 +108,7 @@ nav ul li a{
 header{
   min-height:100vh;
   background:
-    linear-gradient(rgba(11,28,45,.75), rgba(11,28,45,.75)),
+    linear-gradient(120deg, rgba(11,28,45,.85), rgba(193,18,31,.75)),
     url("https://images.unsplash.com/photo-1505842465776-3a8e9a3c8b01") center/cover no-repeat;
   color:white;
   display:flex;
@@ -82,39 +118,39 @@ header{
 
 .hero{
   max-width:900px;
-  animation:fadeUp 1.2s ease;
+  animation:fadeUp 1.3s ease;
 }
 
 .hero h1{
-  font-size:52px;
+  font-size:54px;
   font-weight:700;
-  margin-bottom:20px;
+  margin-bottom:22px;
 }
 
 .hero p{
   font-size:20px;
-  max-width:700px;
-  opacity:.9;
-  margin-bottom:30px;
+  max-width:720px;
+  opacity:.95;
+  margin-bottom:36px;
 }
 
 .hero a{
-  padding:14px 28px;
+  padding:15px 32px;
   border:2px solid white;
   color:white;
   text-decoration:none;
-  font-weight:600;
+  font-weight:700;
   letter-spacing:1px;
   transition:.3s;
 }
 
 .hero a:hover{
   background:white;
-  color:#0b1c2d;
+  color:var(--blue);
 }
 
 @keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px);}
+  from{opacity:0;transform:translateY(50px);}
   to{opacity:1;transform:translateY(0);}
 }
 
@@ -126,7 +162,7 @@ section{
 }
 
 section h2{
-  font-size:36px;
+  font-size:38px;
   margin-bottom:20px;
 }
 
@@ -139,20 +175,21 @@ section p{
 /* ===== PILLARS ===== */
 .pillars{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
   margin-top:50px;
 }
 
 .pillar{
-  border:1px solid #ddd;
+  border-top:4px solid var(--blue);
   padding:30px;
+  background:white;
   transition:.3s;
 }
 
 .pillar:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 40px rgba(0,0,0,.08);
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,.1);
 }
 
 .pillar h3{
@@ -162,7 +199,7 @@ section p{
 
 /* ===== ENGAGE ===== */
 .engage{
-  background:#0b1c2d;
+  background:linear-gradient(90deg, var(--blue), var(--red));
   color:white;
   text-align:center;
 }
@@ -174,16 +211,16 @@ section p{
 .engage a{
   display:inline-block;
   margin-top:30px;
-  padding:14px 30px;
+  padding:15px 34px;
   border:2px solid white;
   color:white;
   text-decoration:none;
-  font-weight:600;
+  font-weight:700;
 }
 
 .engage a:hover{
   background:white;
-  color:#0b1c2d;
+  color:var(--blue);
 }
 
 /* ===== FOOTER ===== */
@@ -196,9 +233,10 @@ footer{
 }
 
 /* ===== MOBILE ===== */
-@media(max-width:800px){
+@media(max-width:900px){
   nav ul{display:none;}
   .hero h1{font-size:36px;}
+  .logo span{display:none;}
 }
 </style>
 </head>
@@ -207,7 +245,11 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <div class="logo">VOIE RÉPUBLICAINE</div>
+  <div class="logo">
+    <img src="logo-vr.png" alt="Voie Républicaine">
+    <span>VOIE RÉPUBLICAINE</span>
+  </div>
+
   <ul>
     <li><a href="#">Accueil</a></li>
     <li><a href="#">Le Mouvement</a></li>
@@ -215,13 +257,14 @@ footer{
     <li><a href="#">Actualités</a></li>
     <li><a href="#">Contact</a></li>
   </ul>
-  <a href="#" class="cta">Rejoindre</a>
+
+  <a href="#" class="cta">REJOINDRE</a>
 </nav>
 
 <!-- HERO -->
 <header>
   <div class="hero">
-    <h1>Pour une République forte, juste et souveraine</h1>
+    <h1>Une République forte. Une Nation souveraine.</h1>
     <p>
       Voie Républicaine est un mouvement politique engagé
       pour la défense des valeurs républicaines,
