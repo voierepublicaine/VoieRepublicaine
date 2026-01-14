@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Adhérer – Voie Républicaine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Inter', sans-serif;
+}
+
+body{
+  background:#0b1c2d;
+  color:white;
+}
+
+section{
+  max-width:600px;
+  margin:auto;
+  padding:100px 24px;
+}
+
+h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+p{
+  font-size:18px;
+  margin-bottom:40px;
+  opacity:.9;
+}
+
+/* FORM */
+form{
+  background:white;
+  color:#111;
+  padding:30px;
+  border-radius:8px;
+}
+
+input, button{
+  width:100%;
+  padding:14px;
+  margin-bottom:16px;
+  font-size:15px;
+  border-radius:4px;
+}
+
+input{
+  border:1px solid #ccc;
+}
+
+button{
+  background:#0b1c2d;
+  color:white;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  background:#102a44;
+}
+
+.small{
+  font-size:12px;
+  color:#555;
+  margin-top:10px;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<section>
+  <h1>Adhérer à Voie Républicaine</h1>
+  <p>Rejoignez le mouvement républicain, souverain et populaire.</p>
+
+  <!-- FORMULAIRE FORMSPREE -->
+  <form action="https://formspree.io/f/xjggkkad" method="POST">
+    <input type="text" name="nom" placeholder="Nom et prénom" required>
+    <input type="email" name="email" placeholder="Adresse email" required>
+    <input type="text" name="ville" placeholder="Ville">
+
+    <button type="submit">Rejoindre le mouvement</button>
+
+    <div class="small">
+      En vous inscrivant, vous acceptez de recevoir des informations de Voie Républicaine.
+    </div>
+  </form>
+
+</section>
+
+</body>
+</html>
