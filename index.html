@@ -14,7 +14,6 @@
   --white:#ffffff;
 }
 
-/* RESET */
 *{
   margin:0;
   padding:0;
@@ -27,41 +26,50 @@ body{
   color:var(--blue);
 }
 
-/* ================= NAVBAR ================= */
+/* ===== NAV BAR ===== */
 nav{
   position:fixed;
   top:0;
   width:100%;
-  padding:16px 32px 14px;
+  background:rgba(255,255,255,.9);
+  backdrop-filter: blur(6px);
+  padding:14px 32px 10px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:transparent;
   z-index:1000;
+  transition:transform .4s ease, opacity .3s ease;
 }
 
-/* Bande bleu blanc rouge */
-nav::after{
-  content:"";
+/* HIDE ON SCROLL */
+nav.hidden{
+  transform:translateY(-120%);
+  opacity:0;
+}
+
+/* TRICOLOR LINE */
+.tricolor{
   position:absolute;
   bottom:0;
   left:0;
   width:100%;
   height:4px;
-  background:linear-gradient(
-    to right,
-    #0055a4 0%,
-    #0055a4 33%,
-    #ffffff 33%,
-    #ffffff 66%,
-    #ef4135 66%,
-    #ef4135 100%
-  );
+  display:flex;
 }
+.tricolor span{
+  flex:1;
+}
+.tricolor .blue{background:#0055a4;}
+.tricolor .white{background:#ffffff;}
+.tricolor .red{background:#ef4135;}
 
 /* LOGO */
+.logo{
+  display:flex;
+  align-items:center;
+}
 .logo img{
-  height:80px; /* ⬅️ change ici la taille si besoin */
+  height:80px; /* 👉 CHANGE ICI LA TAILLE DU LOGO */
 }
 
 /* MENU */
@@ -72,8 +80,8 @@ nav ul{
 }
 
 nav ul li a{
-  color:white;
   text-decoration:none;
+  color:var(--blue);
   font-weight:600;
   font-size:14px;
   position:relative;
@@ -94,24 +102,7 @@ nav ul li a:hover::after{
   width:100%;
 }
 
-/* CTA */
-.cta{
-  padding:10px 22px;
-  border:2px solid white;
-  color:white;
-  text-decoration:none;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:1px;
-  transition:.3s;
-}
-
-.cta:hover{
-  background:white;
-  color:var(--blue);
-}
-
-/* ================= HERO ================= */
+/* ===== HERO ===== */
 header{
   min-height:100vh;
   background:
@@ -137,22 +128,40 @@ header{
 .hero p{
   font-size:20px;
   max-width:720px;
-  margin-bottom:36px;
+  opacity:.95;
+  margin-bottom:30px;
 }
 
-.hero a{
-  padding:15px 32px;
-  border:2px solid white;
+/* HERO FORM */
+.hero-form{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.hero-form input{
+  padding:14px 18px;
+  border:none;
+  font-size:15px;
+  min-width:260px;
+  border-radius:4px;
+}
+
+.hero-form button{
+  padding:14px 30px;
+  background:linear-gradient(90deg,#0055a4,#ef4135);
+  border:none;
   color:white;
-  text-decoration:none;
   font-weight:700;
   letter-spacing:1px;
+  cursor:pointer;
+  border-radius:4px;
   transition:.3s;
 }
 
-.hero a:hover{
-  background:white;
-  color:var(--blue);
+.hero-form button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
 @keyframes fadeUp{
@@ -160,7 +169,7 @@ header{
   to{opacity:1;transform:translateY(0);}
 }
 
-/* ================= SECTIONS ================= */
+/* ===== SECTION ===== */
 section{
   padding:100px 32px;
   max-width:1100px;
@@ -178,7 +187,7 @@ section p{
   max-width:850px;
 }
 
-/* PILLARS */
+/* ===== PILLARS ===== */
 .pillars{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -187,9 +196,9 @@ section p{
 }
 
 .pillar{
-  background:white;
   border-top:4px solid var(--blue);
   padding:30px;
+  background:white;
   transition:.3s;
 }
 
@@ -198,29 +207,16 @@ section p{
   box-shadow:0 20px 40px rgba(0,0,0,.1);
 }
 
-/* ENGAGE */
+/* ===== ENGAGE ===== */
 .engage{
   background:linear-gradient(90deg, var(--blue), var(--red));
   color:white;
   text-align:center;
 }
 
-.engage a{
-  display:inline-block;
-  margin-top:30px;
-  padding:15px 34px;
-  border:2px solid white;
-  color:white;
-  text-decoration:none;
-  font-weight:700;
-}
+.engage h2{color:white;}
 
-.engage a:hover{
-  background:white;
-  color:var(--blue);
-}
-
-/* FOOTER */
+/* ===== FOOTER ===== */
 footer{
   background:#f4f4f4;
   padding:40px;
@@ -229,7 +225,7 @@ footer{
   color:#555;
 }
 
-/* MOBILE */
+/* ===== MOBILE ===== */
 @media(max-width:900px){
   nav ul{display:none;}
   .hero h1{font-size:36px;}
@@ -246,14 +242,18 @@ footer{
   </div>
 
   <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="mouvement.html">Le Mouvement</a></li>
-    <li><a href="idees.html">Nos Idées</a></li>
-    <li><a href="actualites.html">Actualités</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="#">Accueil</a></li>
+    <li><a href="#">Le Mouvement</a></li>
+    <li><a href="#">Nos Idées</a></li>
+    <li><a href="#">Actualités</a></li>
+    <li><a href="#">Contact</a></li>
   </ul>
 
-  <a href="adherer.html" class="cta">REJOINDRE</a>
+  <div class="tricolor">
+    <span class="blue"></span>
+    <span class="white"></span>
+    <span class="red"></span>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -265,7 +265,11 @@ footer{
       pour la défense des valeurs républicaines,
       de la souveraineté nationale et de l’intérêt général.
     </p>
-    <a href="adherer.html">Rejoindre le mouvement</a>
+
+    <form class="hero-form" action="adherer.html">
+      <input type="email" placeholder="Votre adresse email" required>
+      <button type="submit">J’ADHÈRE</button>
+    </form>
   </div>
 </header>
 
@@ -274,40 +278,29 @@ footer{
   <h2>Pourquoi Voie Républicaine</h2>
   <p>
     La France a besoin d’un cap clair, d’une parole forte et d’un engagement sincère
-    au service de la République. Voie Républicaine rassemble celles et ceux qui croient
-    en une nation souveraine, juste et unie.
+    au service de la République.
   </p>
 </section>
 
-<!-- PILLARS -->
-<section>
-  <h2>Nos piliers républicains</h2>
-  <div class="pillars">
-    <div class="pillar">
-      <h3>🇫🇷 République</h3>
-      <p>Respect des institutions, de la laïcité et des valeurs fondatrices.</p>
-    </div>
-    <div class="pillar">
-      <h3> Justice</h3>
-      <p>Égalité devant la loi et autorité républicaine.</p>
-    </div>
-    <div class="pillar">
-      <h3> Souveraineté</h3>
-      <p>Indépendance politique, économique et stratégique.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ENGAGE -->
-<section class="engage">
-  <h2>Rejoignez Voie Républicaine</h2>
-  <p>Engagez-vous pour une France forte et fidèle à ses valeurs.</p>
-  <a href="adherer.html">Adhérer au mouvement</a>
-</section>
-
+<!-- FOOTER -->
 <footer>
   © 2026 — Voie Républicaine · Mouvement politique républicain
 </footer>
+
+<script>
+let lastScroll = 0;
+const nav = document.querySelector("nav");
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+  if(currentScroll > lastScroll && currentScroll > 100){
+    nav.classList.add("hidden");
+  }else{
+    nav.classList.remove("hidden");
+  }
+  lastScroll = currentScroll;
+});
+</script>
 
 </body>
 </html>
