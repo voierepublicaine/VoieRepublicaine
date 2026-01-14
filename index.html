@@ -1,1 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Voie Républicaine – Mouvement politique</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter', sans-serif;
+}
+
+body{
+  background:#ffffff;
+  color:#0b1c2d;
+}
+
+/* ===== NAV BAR ===== */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:white;
+  border-bottom:1px solid #e5e5e5;
+  padding:16px 32px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:28px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:#0b1c2d;
+  font-weight:500;
+  font-size:14px;
+}
+
+.cta{
+  padding:10px 18px;
+  border:2px solid #0b1c2d;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  color:#0b1c2d;
+  transition:.3s;
+}
+
+.cta:hover{
+  background:#0b1c2d;
+  color:white;
+}
+
+/* ===== HERO ===== */
+header{
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(11,28,45,.75), rgba(11,28,45,.75)),
+    url("https://images.unsplash.com/photo-1505842465776-3a8e9a3c8b01") center/cover no-repeat;
+  color:white;
+  display:flex;
+  align-items:center;
+  padding:0 32px;
+}
+
+.hero{
+  max-width:900px;
+  animation:fadeUp 1.2s ease;
+}
+
+.hero h1{
+  font-size:52px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:20px;
+  max-width:700px;
+  opacity:.9;
+  margin-bottom:30px;
+}
+
+.hero a{
+  padding:14px 28px;
+  border:2px solid white;
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  letter-spacing:1px;
+  transition:.3s;
+}
+
+.hero a:hover{
+  background:white;
+  color:#0b1c2d;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ===== SECTION ===== */
+section{
+  padding:100px 32px;
+  max-width:1100px;
+  margin:auto;
+}
+
+section h2{
+  font-size:36px;
+  margin-bottom:20px;
+}
+
+section p{
+  font-size:17px;
+  color:#333;
+  max-width:850px;
+}
+
+/* ===== PILLARS ===== */
+.pillars{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+  margin-top:50px;
+}
+
+.pillar{
+  border:1px solid #ddd;
+  padding:30px;
+  transition:.3s;
+}
+
+.pillar:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
+
+.pillar h3{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+/* ===== ENGAGE ===== */
+.engage{
+  background:#0b1c2d;
+  color:white;
+  text-align:center;
+}
+
+.engage h2{
+  color:white;
+}
+
+.engage a{
+  display:inline-block;
+  margin-top:30px;
+  padding:14px 30px;
+  border:2px solid white;
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.engage a:hover{
+  background:white;
+  color:#0b1c2d;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#f4f4f4;
+  padding:40px;
+  text-align:center;
+  font-size:13px;
+  color:#555;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:800px){
+  nav ul{display:none;}
+  .hero h1{font-size:36px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">VOIE RÉPUBLICAINE</div>
+  <ul>
+    <li><a href="#">Accueil</a></li>
+    <li><a href="#">Le Mouvement</a></li>
+    <li><a href="#">Nos Idées</a></li>
+    <li><a href="#">Actualités</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <a href="#" class="cta">Rejoindre</a>
+</nav>
+
+<!-- HERO -->
+<header>
+  <div class="hero">
+    <h1>Pour une République forte, juste et souveraine</h1>
+    <p>
+      Voie Républicaine est un mouvement politique engagé
+      pour la défense des valeurs républicaines,
+      de la souveraineté nationale et de l’intérêt général.
+    </p>
+    <a href="#">Rejoindre le mouvement</a>
+  </div>
+</header>
+
+<!-- WHY -->
+<section>
+  <h2>Pourquoi Voie Républicaine</h2>
+  <p>
+    La France a besoin d’un cap clair, d’une parole forte et d’un engagement sincère
+    au service de la République. Voie Républicaine rassemble celles et ceux qui croient
+    en une nation souveraine, juste et unie.
+  </p>
+</section>
+
+<!-- PILLARS -->
+<section>
+  <h2>Nos piliers républicains</h2>
+  <div class="pillars">
+    <div class="pillar">
+      <h3>🇫🇷 République</h3>
+      <p>Respect des institutions, de la laïcité et des valeurs fondatrices.</p>
+    </div>
+    <div class="pillar">
+      <h3>⚖️ Justice</h3>
+      <p>Égalité devant la loi et fermeté républicaine.</p>
+    </div>
+    <div class="pillar">
+      <h3>🛡️ Souveraineté</h3>
+      <p>Indépendance politique, économique et stratégique.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGE -->
+<section class="engage">
+  <h2>Rejoignez Voie Républicaine</h2>
+  <p>Engagez-vous pour une France forte et fidèle à ses valeurs.</p>
+  <a href="#">Adhérer au mouvement</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 — Voie Républicaine · Mouvement politique républicain
+</footer>
+
+</body>
+</html>
