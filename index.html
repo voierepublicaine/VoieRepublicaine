@@ -14,6 +14,7 @@
   --white:#ffffff;
 }
 
+/* RESET */
 *{
   margin:0;
   padding:0;
@@ -26,35 +27,41 @@ body{
   color:var(--blue);
 }
 
-/* ===== NAV BAR ===== */
+/* ================= NAVBAR ================= */
 nav{
   position:fixed;
   top:0;
   width:100%;
-  background:white;
-  border-bottom:3px solid var(--blue);
-  padding:14px 32px;
+  padding:16px 32px 14px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  background:transparent;
   z-index:1000;
 }
 
+/* Bande bleu blanc rouge */
+nav::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:4px;
+  background:linear-gradient(
+    to right,
+    #0055a4 0%,
+    #0055a4 33%,
+    #ffffff 33%,
+    #ffffff 66%,
+    #ef4135 66%,
+    #ef4135 100%
+  );
+}
+
 /* LOGO */
-.logo{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
 .logo img{
-  height:90px;
-}
-
-.logo span{
-  font-size:20px;
-  font-weight:700;
-  letter-spacing:1px;
+  height:80px; /* ⬅️ change ici la taille si besoin */
 }
 
 /* MENU */
@@ -65,8 +72,8 @@ nav ul{
 }
 
 nav ul li a{
+  color:white;
   text-decoration:none;
-  color:var(--blue);
   font-weight:600;
   font-size:14px;
   position:relative;
@@ -90,8 +97,8 @@ nav ul li a:hover::after{
 /* CTA */
 .cta{
   padding:10px 22px;
-  border:2px solid var(--red);
-  color:var(--red);
+  border:2px solid white;
+  color:white;
   text-decoration:none;
   font-size:13px;
   font-weight:700;
@@ -100,11 +107,11 @@ nav ul li a:hover::after{
 }
 
 .cta:hover{
-  background:var(--red);
-  color:white;
+  background:white;
+  color:var(--blue);
 }
 
-/* ===== HERO ===== */
+/* ================= HERO ================= */
 header{
   min-height:100vh;
   background:
@@ -118,7 +125,7 @@ header{
 
 .hero{
   max-width:900px;
-  animation:fadeUp 1.3s ease;
+  animation:fadeUp 1.2s ease;
 }
 
 .hero h1{
@@ -130,7 +137,6 @@ header{
 .hero p{
   font-size:20px;
   max-width:720px;
-  opacity:.95;
   margin-bottom:36px;
 }
 
@@ -154,7 +160,7 @@ header{
   to{opacity:1;transform:translateY(0);}
 }
 
-/* ===== SECTION ===== */
+/* ================= SECTIONS ================= */
 section{
   padding:100px 32px;
   max-width:1100px;
@@ -172,7 +178,7 @@ section p{
   max-width:850px;
 }
 
-/* ===== PILLARS ===== */
+/* PILLARS */
 .pillars{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -181,9 +187,9 @@ section p{
 }
 
 .pillar{
+  background:white;
   border-top:4px solid var(--blue);
   padding:30px;
-  background:white;
   transition:.3s;
 }
 
@@ -192,20 +198,11 @@ section p{
   box-shadow:0 20px 40px rgba(0,0,0,.1);
 }
 
-.pillar h3{
-  font-size:20px;
-  margin-bottom:10px;
-}
-
-/* ===== ENGAGE ===== */
+/* ENGAGE */
 .engage{
   background:linear-gradient(90deg, var(--blue), var(--red));
   color:white;
   text-align:center;
-}
-
-.engage h2{
-  color:white;
 }
 
 .engage a{
@@ -223,7 +220,7 @@ section p{
   color:var(--blue);
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
   background:#f4f4f4;
   padding:40px;
@@ -232,11 +229,10 @@ footer{
   color:#555;
 }
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media(max-width:900px){
   nav ul{display:none;}
   .hero h1{font-size:36px;}
-  .logo span{display:none;}
 }
 </style>
 </head>
@@ -250,14 +246,14 @@ footer{
   </div>
 
   <ul>
-    <li><a href="#">Accueil</a></li>
-    <li><a href="#">Le Mouvement</a></li>
-    <li><a href="#">Nos Idées</a></li>
-    <li><a href="#">Actualités</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="mouvement.html">Le Mouvement</a></li>
+    <li><a href="idees.html">Nos Idées</a></li>
+    <li><a href="actualites.html">Actualités</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 
-  <a href="#" class="cta">REJOINDRE</a>
+  <a href="adherer.html" class="cta">REJOINDRE</a>
 </nav>
 
 <!-- HERO -->
@@ -269,7 +265,7 @@ footer{
       pour la défense des valeurs républicaines,
       de la souveraineté nationale et de l’intérêt général.
     </p>
-    <a href="#">Rejoindre le mouvement</a>
+    <a href="adherer.html">Rejoindre le mouvement</a>
   </div>
 </header>
 
@@ -293,7 +289,7 @@ footer{
     </div>
     <div class="pillar">
       <h3> Justice</h3>
-      <p>Égalité devant la loi et fermeté républicaine.</p>
+      <p>Égalité devant la loi et autorité républicaine.</p>
     </div>
     <div class="pillar">
       <h3> Souveraineté</h3>
@@ -306,13 +302,13 @@ footer{
 <section class="engage">
   <h2>Rejoignez Voie Républicaine</h2>
   <p>Engagez-vous pour une France forte et fidèle à ses valeurs.</p>
-  <a href="#">Adhérer au mouvement</a>
+  <a href="adherer.html">Adhérer au mouvement</a>
 </section>
 
-<!-- FOOTER -->
 <footer>
   © 2026 — Voie Républicaine · Mouvement politique républicain
 </footer>
 
 </body>
 </html>
+
