@@ -31,23 +31,26 @@ nav{
   position:fixed;
   top:0;
   width:100%;
-  background:rgba(255,255,255,.9);
-  backdrop-filter: blur(6px);
-  padding:14px 32px 10px;
+  background:transparent;
+  padding:16px 32px 12px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   z-index:1000;
-  transition:transform .4s ease, opacity .3s ease;
+  transition:transform .4s ease, background .4s ease;
 }
 
-/* HIDE ON SCROLL */
+/* NAV SCROLL EFFECT */
+nav.scrolled{
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(6px);
+}
+
 nav.hidden{
   transform:translateY(-120%);
-  opacity:0;
 }
 
-/* TRICOLOR LINE */
+/* TRICOLORE */
 .tricolor{
   position:absolute;
   bottom:0;
@@ -56,20 +59,14 @@ nav.hidden{
   height:4px;
   display:flex;
 }
-.tricolor span{
-  flex:1;
-}
+.tricolor span{flex:1;}
 .tricolor .blue{background:#0055a4;}
 .tricolor .white{background:#ffffff;}
 .tricolor .red{background:#ef4135;}
 
 /* LOGO */
-.logo{
-  display:flex;
-  align-items:center;
-}
 .logo img{
-  height:80px; /* 👉 CHANGE ICI LA TAILLE DU LOGO */
+  height:80px; /* taille du logo */
 }
 
 /* MENU */
@@ -81,10 +78,15 @@ nav ul{
 
 nav ul li a{
   text-decoration:none;
-  color:var(--blue);
+  color:white;
   font-weight:600;
   font-size:14px;
   position:relative;
+  transition:.3s;
+}
+
+nav.scrolled ul li a{
+  color:var(--blue);
 }
 
 nav ul li a::after{
@@ -121,18 +123,16 @@ header{
 
 .hero h1{
   font-size:54px;
-  font-weight:700;
   margin-bottom:22px;
 }
 
 .hero p{
   font-size:20px;
   max-width:720px;
-  opacity:.95;
   margin-bottom:30px;
 }
 
-/* HERO FORM */
+/* FORM ADHESION */
 .hero-form{
   display:flex;
   gap:12px;
@@ -148,7 +148,7 @@ header{
 }
 
 .hero-form button{
-  padding:14px 30px;
+  padding:14px 32px;
   background:linear-gradient(90deg,#0055a4,#ef4135);
   border:none;
   color:white;
@@ -169,9 +169,9 @@ header{
   to{opacity:1;transform:translateY(0);}
 }
 
-/* ===== SECTION ===== */
+/* ===== SECTIONS ===== */
 section{
-  padding:100px 32px;
+  padding:120px 32px;
   max-width:1100px;
   margin:auto;
 }
@@ -187,35 +187,6 @@ section p{
   max-width:850px;
 }
 
-/* ===== PILLARS ===== */
-.pillars{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-  margin-top:50px;
-}
-
-.pillar{
-  border-top:4px solid var(--blue);
-  padding:30px;
-  background:white;
-  transition:.3s;
-}
-
-.pillar:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 40px rgba(0,0,0,.1);
-}
-
-/* ===== ENGAGE ===== */
-.engage{
-  background:linear-gradient(90deg, var(--blue), var(--red));
-  color:white;
-  text-align:center;
-}
-
-.engage h2{color:white;}
-
 /* ===== FOOTER ===== */
 footer{
   background:#f4f4f4;
@@ -225,7 +196,7 @@ footer{
   color:#555;
 }
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media(max-width:900px){
   nav ul{display:none;}
   .hero h1{font-size:36px;}
@@ -236,17 +207,16 @@ footer{
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="navbar">
   <div class="logo">
     <img src="logo-vr.png" alt="Voie Républicaine">
   </div>
 
   <ul>
-    <li><a href="#">Accueil</a></li>
-    <li><a href="#">Le Mouvement</a></li>
-    <li><a href="#">Nos Idées</a></li>
-    <li><a href="#">Actualités</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="#accueil">Accueil</a></li>
+    <li><a href="#mouvement">Le Mouvement</a></li>
+    <li><a href="#idees">Nos Idées</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 
   <div class="tricolor">
@@ -257,13 +227,12 @@ footer{
 </nav>
 
 <!-- HERO -->
-<header>
+<header id="accueil">
   <div class="hero">
     <h1>Une République forte. Une Nation souveraine.</h1>
     <p>
-      Voie Républicaine est un mouvement politique engagé
-      pour la défense des valeurs républicaines,
-      de la souveraineté nationale et de l’intérêt général.
+      Voie Républicaine défend les valeurs républicaines,
+      la souveraineté nationale et l’intérêt général.
     </p>
 
     <form class="hero-form" action="adherer.html">
@@ -273,32 +242,57 @@ footer{
   </div>
 </header>
 
-<!-- WHY -->
-<section>
-  <h2>Pourquoi Voie Républicaine</h2>
+<!-- MOUVEMENT -->
+<section id="mouvement">
+  <h2>Le Mouvement</h2>
   <p>
-    La France a besoin d’un cap clair, d’une parole forte et d’un engagement sincère
-    au service de la République.
+    Voie Républicaine est un mouvement politique républicain,
+    souverain et profondément attaché à l’unité nationale.
   </p>
 </section>
 
-<!-- FOOTER -->
+<!-- IDEES -->
+<section id="idees">
+  <h2>Nos Idées</h2>
+  <p>
+    Autorité républicaine, justice sociale, souveraineté stratégique,
+    protection de la nation et respect des citoyens.
+  </p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>
+    Contactez Voie Républicaine pour toute demande,
+    engagement ou partenariat citoyen.
+  </p>
+</section>
+
 <footer>
   © 2026 — Voie Républicaine · Mouvement politique républicain
 </footer>
 
 <script>
 let lastScroll = 0;
-const nav = document.querySelector("nav");
+const nav = document.getElementById("navbar");
 
 window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset;
-  if(currentScroll > lastScroll && currentScroll > 100){
+  const current = window.pageYOffset;
+
+  if(current > lastScroll && current > 100){
     nav.classList.add("hidden");
   }else{
     nav.classList.remove("hidden");
   }
-  lastScroll = currentScroll;
+
+  if(current > 50){
+    nav.classList.add("scrolled");
+  }else{
+    nav.classList.remove("scrolled");
+  }
+
+  lastScroll = current;
 });
 </script>
 
