@@ -23,11 +23,11 @@
 }
 
 body{
-  background:var(--white);
+  background:var(--light);
   color:var(--blue);
 }
 
-/* ===== NAV BAR (IDENTIQUE ACCUEIL) ===== */
+/* ===== NAV BAR ===== */
 nav{
   position:fixed;
   top:0;
@@ -89,10 +89,10 @@ nav ul li a:hover::after{
 .tricolor .white{background:#ffffff;}
 .tricolor .red{background:#ef4135;}
 
-/* ===== HERO PROGRAMME ===== */
+/* ===== HERO ===== */
 header{
-  padding-top:160px;
-  padding-bottom:100px;
+  padding-top:170px;
+  padding-bottom:110px;
   background:linear-gradient(120deg,#0b1c2d,#c1121f);
   color:white;
   text-align:center;
@@ -100,7 +100,7 @@ header{
 
 header h1{
   font-size:48px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 header p{
@@ -110,37 +110,54 @@ header p{
   opacity:.95;
 }
 
-/* ===== SECTIONS ===== */
+/* ===== MAIN ===== */
 main{
-  max-width:1100px;
+  max-width:1200px;
   margin:auto;
-  padding:100px 32px;
+  padding:110px 32px;
 }
 
-.program-section{
-  margin-bottom:90px;
+/* GRID */
+.program-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:40px;
 }
 
-.program-section h2{
-  font-size:34px;
-  margin-bottom:20px;
-  position:relative;
+/* CARD */
+.program-card{
+  background:white;
+  border-radius:8px;
+  padding:40px 36px;
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+  transition:.3s;
+  border-top:6px solid var(--blue);
 }
 
-.program-section h2::before{
-  content:"";
-  width:50px;
-  height:4px;
-  background:linear-gradient(90deg,#0055a4,#ef4135);
-  display:block;
-  margin-bottom:14px;
+.program-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 60px rgba(0,0,0,.12);
 }
 
-.program-section p{
-  font-size:18px;
-  line-height:1.7;
+.program-card.red{
+  border-top-color:var(--red);
+}
+
+.program-card h2{
+  font-size:24px;
+  margin-bottom:16px;
+}
+
+.program-card ul{
+  margin-top:14px;
+  padding-left:18px;
+}
+
+.program-card ul li{
+  margin-bottom:10px;
+  font-size:16px;
+  line-height:1.5;
   color:#333;
-  max-width:900px;
 }
 
 /* ===== FOOTER ===== */
@@ -185,73 +202,78 @@ footer{
 
 <!-- HERO -->
 <header>
-  <h1>Le programme de Voie Républicaine</h1>
+  <h1>Notre programme</h1>
   <p>
-    Une France juste, responsable et souveraine,  
-    où la loi est respectée et le travail valorisé.
+    Une France juste, ferme et responsable.  
+    Des droits pour tous, des devoirs pour chacun.
   </p>
 </header>
 
-<!-- CONTENT -->
+<!-- PROGRAMME -->
 <main>
 
-  <div class="program-section">
-    <h2> Justice ferme et égale</h2>
-    <p>
-      La loi doit être la même pour tous, sans exception.
-      Les peines doivent être réellement appliquées et exécutées.
-      La justice doit être plus rapide, plus ferme et toujours du côté des victimes.
-      Les crimes graves appellent des sanctions exemplaires.
-    </p>
-  </div>
+  <div class="program-grid">
 
-  <div class="program-section">
-    <h2> Sécurité et ordre républicain</h2>
-    <p>
-      La sécurité est un droit fondamental.
-      Tolérance zéro pour les violences, les trafics et les zones de non-droit.
-      L’État doit être présent partout sur le territoire.
-      La République ne recule devant aucun territoire.
-    </p>
-  </div>
+    <div class="program-card">
+      <h2>⚖️ Justice ferme et égale</h2>
+      <ul>
+        <li>Même loi pour tous, sans exception</li>
+        <li>Peines réellement appliquées</li>
+        <li>Justice plus rapide, moins d’impunité</li>
+        <li>Protection renforcée des victimes</li>
+      </ul>
+    </div>
 
-  <div class="program-section">
-    <h2> Le travail au cœur du modèle social</h2>
-    <p>
-      Travailler doit toujours permettre de vivre dignement.
-      Les aides sociales doivent être justes, ciblées et conditionnées.
-      Le mérite, l’effort et l’engagement doivent être récompensés.
-      Le travail est la première source de dignité.
-    </p>
-  </div>
+    <div class="program-card red">
+      <h2>👮 Sécurité et ordre républicain</h2>
+      <ul>
+        <li>Tolérance zéro pour les violences et trafics</li>
+        <li>Présence de l’État partout sur le territoire</li>
+        <li>Fin des zones de non-droit</li>
+        <li>Police respectée et responsable</li>
+      </ul>
+    </div>
 
-  <div class="program-section">
-    <h2> Gestion responsable de l’argent public</h2>
-    <p>
-      L’argent public appartient aux Français.
-      L’État doit réduire le gaspillage et concentrer ses moyens
-      sur les priorités essentielles : sécurité, justice, santé, école.
-      Protéger l’avenir des jeunes impose une gestion responsable.
-    </p>
-  </div>
+    <div class="program-card">
+      <h2>💼 Travail et dignité</h2>
+      <ul>
+        <li>Le travail doit toujours payer plus que l’inaction</li>
+        <li>Aides sociales ciblées et contrôlées</li>
+        <li>Valorisation des métiers utiles</li>
+        <li>Lutte contre les abus</li>
+      </ul>
+    </div>
 
-  <div class="program-section">
-    <h2> Immigration contrôlée et juste</h2>
-    <p>
-      L’immigration doit être strictement légale, contrôlée et maîtrisée.
-      L’intégration, le respect des lois et des valeurs de la République
-      sont non négociables.
-      Refus clair de l’immigration illégale et des abus du système.
-    </p>
-  </div>
+    <div class="program-card red">
+      <h2>💰 Argent public responsable</h2>
+      <ul>
+        <li>Réduction du gaspillage de l’État</li>
+        <li>Dépenses publiques contrôlées</li>
+        <li>Priorité : sécurité, justice, santé, école</li>
+        <li>Protection de l’avenir des jeunes</li>
+      </ul>
+    </div>
 
-  <div class="program-section">
-    <h2> Pouvoir citoyen et stabilité de l’État</h2>
-    <p>
-      Les citoyens doivent être davantage écoutés sur les grandes orientations.
-      L’État doit garantir la stabilité, la continuité et l’intérêt général.
-      La démocratie doit rester responsable et protectrice.
-    </p>
+    <div class="program-card">
+      <h2>🌍 Immigration contrôlée</h2>
+      <ul>
+        <li>Immigration strictement légale</li>
+        <li>Respect des lois et valeurs françaises</li>
+        <li>Refus de l’immigration illégale</li>
+        <li>Fin des abus du système social</li>
+      </ul>
+    </div>
+
+    <div class="program-card red">
+      <h2>🗳️ Pouvoir citoyen encadré</h2>
+      <ul>
+        <li>Plus d’écoute des citoyens</li>
+        <li>Consultation sur les grandes orientations</li>
+        <li>Décisions responsables et stables</li>
+        <li>Primauté de l’intérêt général</li>
+      </ul>
+    </div>
+
   </div>
 
 </main>
