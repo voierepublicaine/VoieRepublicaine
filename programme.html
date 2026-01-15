@@ -7,179 +7,314 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+<style>
+:root{
+  --blue:#0b1c2d;
+  --red:#c1121f;
+  --white:#ffffff;
+  --gray:#f5f6f7;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter', sans-serif;
+}
+
+body{
+  background:var(--white);
+  color:var(--blue);
+}
+
+/* ===== NAV BAR (IDENTIQUE ACCUEIL) ===== */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:transparent;
+  padding:16px 32px 12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  transition:transform .4s ease, background .4s ease;
+}
+
+nav.scrolled{
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(6px);
+}
+
+nav.hidden{
+  transform:translateY(-120%);
+}
+
+.tricolor{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:4px;
+  display:flex;
+}
+.tricolor span{flex:1;}
+.tricolor .blue{background:#0055a4;}
+.tricolor .white{background:#ffffff;}
+.tricolor .red{background:#ef4135;}
+
+.logo img{
+  height:80px;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:28px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:white;
+  font-weight:600;
+  font-size:14px;
+  position:relative;
+  transition:.3s;
+}
+
+nav.scrolled ul li a{
+  color:var(--blue);
+}
+
+nav ul li a::after{
+  content:"";
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:0;
+  height:2px;
+  background:var(--red);
+  transition:.3s;
+}
+
+nav ul li a:hover::after{
+  width:100%;
+}
+
+/* ===== HERO PROGRAMME ===== */
+header{
+  padding-top:160px;
+  padding-bottom:100px;
+  background:linear-gradient(
+    135deg,
+    rgba(11,28,45,.95),
+    rgba(11,28,45,.85)
+  );
+  color:white;
+  text-align:center;
+  position:relative;
+}
+
+header h1{
+  font-size:52px;
+  margin-bottom:16px;
+}
+
+header p{
+  font-size:20px;
+  max-width:720px;
+  margin:auto;
+  opacity:.9;
+}
+
+/* BANDEAU FRANCE FIN */
+.header-band{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:8px;
+  display:flex;
+}
+.header-band span{flex:1;}
+.header-band .blue{background:#0055a4;}
+.header-band .white{background:#ffffff;}
+.header-band .red{background:#ef4135;}
+
+/* ===== CONTENU ===== */
+main{
+  background:var(--gray);
+  padding:100px 24px;
+}
+
+.program-section{
+  max-width:1100px;
+  margin:auto;
+  margin-bottom:80px;
+  background:white;
+  padding:60px;
+  border-radius:6px;
+  box-shadow:0 20px 60px rgba(0,0,0,.08);
+  position:relative;
+}
+
+.program-section::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:6px;
+  height:100%;
+  background:linear-gradient(
+    to bottom,
+    #0055a4,
+    #ffffff,
+    #ef4135
+  );
+  border-radius:6px 0 0 6px;
+}
+
+.program-section h2{
+  font-size:34px;
+  margin-bottom:20px;
+}
+
+.program-section ul{
+  margin-left:20px;
+}
+
+.program-section li{
+  font-size:17px;
+  line-height:1.7;
+  margin-bottom:12px;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#f1f1f1;
+  padding:40px;
+  text-align:center;
+  font-size:13px;
+  color:#555;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav ul{display:none;}
+  header h1{font-size:36px;}
+  .program-section{padding:40px 24px;}
+}
+</style>
 </head>
 
 <body>
 
-<!-- ===== NAV BAR (IDENTIQUE ACCUEIL) ===== -->
-<nav class="navbar">
+<!-- NAV -->
+<nav id="navbar">
   <div class="logo">
     <img src="logo-vr.png" alt="Voie Républicaine">
   </div>
 
-  <ul class="menu">
+  <ul>
     <li><a href="index.html">Accueil</a></li>
-    <li><a href="programme.html" class="active">Programme</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="index.html#mouvement">Le Mouvement</a></li>
+    <li><a href="programme.html">Programme</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
   </ul>
 
-  <a href="adhesion.html" class="cta">ADHÉRER</a>
+  <div class="tricolor">
+    <span class="blue"></span>
+    <span class="white"></span>
+    <span class="red"></span>
+  </div>
 </nav>
 
-<!-- ===== HERO PROGRAMME ===== -->
-<header class="hero programme-hero">
-  <div class="hero-content">
-    <h1>Notre programme pour la République</h1>
-    <p>
-      Une France juste, responsable et souveraine.  
-      Des droits pour tous, des devoirs pour chacun.
-    </p>
+<!-- HERO -->
+<header>
+  <h1>Notre programme</h1>
+  <p>
+    Une France juste, ferme et responsable.
+    Des droits, mais aussi des devoirs.
+  </p>
+
+  <div class="header-band">
+    <span class="blue"></span>
+    <span class="white"></span>
+    <span class="red"></span>
   </div>
 </header>
 
-<!-- ===== PROGRAMME ===== -->
-<main class="programme">
+<!-- CONTENU -->
+<main>
 
-  <!-- JUSTICE -->
-  <section class="programme-section">
-    <div class="bande-tricolore"></div>
+  <section class="program-section">
     <h2>⚖️ Justice ferme, rapide et égale</h2>
-    <p>
-      La République ne protège que si la loi est respectée.
-      À Voie Républicaine, la justice est la même pour tous,
-      sans privilège ni faiblesse.
-    </p>
     <ul>
       <li>Même loi pour tous, sans exception</li>
       <li>Peines réellement appliquées</li>
-      <li>Justice accélérée pour éviter l’impunité</li>
+      <li>Justice plus rapide pour éviter l’impunité</li>
       <li>Protection renforcée des victimes</li>
     </ul>
-    <p class="highlight">
-      👉 Autorité juste, pas de laxisme, pas d’injustice.
-    </p>
   </section>
 
-  <!-- SÉCURITÉ -->
-  <section class="programme-section light">
-    <div class="bande-tricolore"></div>
+  <section class="program-section">
     <h2>👮 Sécurité et ordre républicain</h2>
-    <p>
-      La sécurité est un droit fondamental.
-      L’État doit être présent partout, pour tous.
-    </p>
     <ul>
-      <li>Tolérance zéro pour les violences et trafics</li>
-      <li>Police respectée, encadrée et responsable</li>
+      <li>Tolérance zéro pour les trafics et violences</li>
+      <li>Présence de l’État sur tout le territoire</li>
+      <li>Police respectée et responsable</li>
       <li>Fin des zones de non-droit</li>
-      <li>Présence républicaine sur tout le territoire</li>
     </ul>
-    <p class="highlight">
-      👉 La République ne recule jamais.
-    </p>
   </section>
 
-  <!-- TRAVAIL -->
-  <section class="programme-section">
-    <div class="bande-tricolore"></div>
-    <h2>💼 Le travail au cœur du modèle social</h2>
-    <p>
-      Le travail est une dignité.
-      Il doit toujours être plus valorisé que l’assistanat.
-    </p>
+  <section class="program-section">
+    <h2>💼 Travail et dignité</h2>
     <ul>
-      <li>Travailler doit rapporter plus que ne rien faire</li>
-      <li>Aides ciblées sur ceux qui en ont réellement besoin</li>
-      <li>Lutte contre les abus</li>
+      <li>Le travail doit toujours payer plus que l’assistanat</li>
+      <li>Aides sociales ciblées et contrôlées</li>
       <li>Valorisation des métiers essentiels</li>
+      <li>Lutte contre les abus</li>
     </ul>
-    <p class="highlight">
-      👉 Moins d’assistanat, plus de mérite.
-    </p>
   </section>
 
-  <!-- FINANCES -->
-  <section class="programme-section light">
-    <div class="bande-tricolore"></div>
-    <h2>💰 Gestion responsable de l’argent public</h2>
-    <p>
-      L’argent public est l’argent des Français.
-      Il doit être utilisé avec sérieux et transparence.
-    </p>
-    <ul>
-      <li>Réduction du gaspillage de l’État</li>
-      <li>Dépenses publiques contrôlées</li>
-      <li>Priorité aux services essentiels</li>
-      <li>Réduction de la dette nationale</li>
-    </ul>
-    <p class="highlight">
-      👉 Protéger l’avenir des jeunes générations.
-    </p>
-  </section>
-
-  <!-- RÉINSERTION -->
-  <section class="programme-section">
-    <div class="bande-tricolore"></div>
-    <h2>🧠 Responsabilité et réinsertion</h2>
-    <p>
-      Chacun est responsable de ses actes.
-      Mais la République laisse une chance à ceux qui veulent s’en sortir.
-    </p>
-    <ul>
-      <li>Sanctions claires et appliquées</li>
-      <li>Deuxième chance encadrée</li>
-      <li>Formation et accompagnement</li>
-      <li>Retour au travail pour se reconstruire</li>
-    </ul>
-    <p class="highlight">
-      👉 La main tendue, oui. L’impunité, non.
-    </p>
-  </section>
-
-  <!-- IMMIGRATION -->
-  <section class="programme-section light">
-    <div class="bande-tricolore"></div>
+  <section class="program-section">
     <h2>🌍 Immigration contrôlée et juste</h2>
-    <p>
-      Pas de haine, pas de naïveté.
-      Une immigration légale, encadrée et respectueuse des lois.
-    </p>
     <ul>
-      <li>Immigration strictement contrôlée</li>
-      <li>Accueil des personnes prêtes à travailler et s’intégrer</li>
+      <li>Immigration légale, encadrée et utile</li>
+      <li>Intégration par le travail et le respect des lois</li>
       <li>Refus de l’immigration illégale</li>
-      <li>Respect absolu des lois de la République</li>
+      <li>Aucune complaisance envers les abus</li>
     </ul>
-    <p class="highlight">
-      👉 Humanité et fermeté républicaine.
-    </p>
-  </section>
-
-  <!-- CITOYEN -->
-  <section class="programme-section">
-    <div class="bande-tricolore"></div>
-    <h2>🗳️ Pouvoir citoyen encadré</h2>
-    <p>
-      Le peuple doit être écouté.
-      Mais l’État doit garantir la stabilité.
-    </p>
-    <ul>
-      <li>Consultation sur les grandes orientations</li>
-      <li>Décisions responsables et durables</li>
-      <li>Refus des choix émotionnels dangereux</li>
-    </ul>
-    <p class="highlight">
-      👉 Le peuple décide, la République protège.
-    </p>
   </section>
 
 </main>
 
-<!-- ===== FOOTER ===== -->
 <footer>
-  © 2026 — Voie Républicaine · Mouvement politique républicain
+  © 2026 — Voie Républicaine · Programme politique officiel
 </footer>
+
+<script>
+let lastScroll = 0;
+const nav = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+  const current = window.pageYOffset;
+
+  if(current > lastScroll && current > 100){
+    nav.classList.add("hidden");
+  }else{
+    nav.classList.remove("hidden");
+  }
+
+  if(current > 50){
+    nav.classList.add("scrolled");
+  }else{
+    nav.classList.remove("scrolled");
+  }
+
+  lastScroll = current;
+});
+</script>
 
 </body>
 </html>
