@@ -12,7 +12,7 @@
   --blue:#0b1c2d;
   --red:#c1121f;
   --white:#ffffff;
-  --gray:#f5f6f7;
+  --light:#f5f7fa;
 }
 
 *{
@@ -32,39 +32,18 @@ nav{
   position:fixed;
   top:0;
   width:100%;
-  background:transparent;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(6px);
   padding:16px 32px 12px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   z-index:1000;
-  transition:transform .4s ease, background .4s ease;
 }
-
-nav.scrolled{
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(6px);
-}
-
-nav.hidden{
-  transform:translateY(-120%);
-}
-
-.tricolor{
-  position:absolute;
-  bottom:0;
-  left:0;
-  width:100%;
-  height:4px;
-  display:flex;
-}
-.tricolor span{flex:1;}
-.tricolor .blue{background:#0055a4;}
-.tricolor .white{background:#ffffff;}
-.tricolor .red{background:#ef4135;}
 
 .logo img{
   height:80px;
+  cursor:pointer;
 }
 
 nav ul{
@@ -75,15 +54,10 @@ nav ul{
 
 nav ul li a{
   text-decoration:none;
-  color:white;
+  color:var(--blue);
   font-weight:600;
   font-size:14px;
   position:relative;
-  transition:.3s;
-}
-
-nav.scrolled ul li a{
-  color:var(--blue);
 }
 
 nav ul li a::after{
@@ -101,97 +75,77 @@ nav ul li a:hover::after{
   width:100%;
 }
 
-/* ===== HERO PROGRAMME ===== */
-header{
-  padding-top:160px;
-  padding-bottom:100px;
-  background:linear-gradient(
-    135deg,
-    rgba(11,28,45,.95),
-    rgba(11,28,45,.85)
-  );
-  color:white;
-  text-align:center;
-  position:relative;
-}
-
-header h1{
-  font-size:52px;
-  margin-bottom:16px;
-}
-
-header p{
-  font-size:20px;
-  max-width:720px;
-  margin:auto;
-  opacity:.9;
-}
-
-/* BANDEAU FRANCE FIN */
-.header-band{
+/* TRICOLORE */
+.tricolor{
   position:absolute;
   bottom:0;
   left:0;
   width:100%;
-  height:8px;
+  height:4px;
   display:flex;
 }
-.header-band span{flex:1;}
-.header-band .blue{background:#0055a4;}
-.header-band .white{background:#ffffff;}
-.header-band .red{background:#ef4135;}
+.tricolor span{flex:1;}
+.tricolor .blue{background:#0055a4;}
+.tricolor .white{background:#ffffff;}
+.tricolor .red{background:#ef4135;}
 
-/* ===== CONTENU ===== */
+/* ===== HERO PROGRAMME ===== */
+header{
+  padding-top:160px;
+  padding-bottom:100px;
+  background:linear-gradient(120deg,#0b1c2d,#c1121f);
+  color:white;
+  text-align:center;
+}
+
+header h1{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+header p{
+  font-size:20px;
+  max-width:800px;
+  margin:auto;
+  opacity:.95;
+}
+
+/* ===== SECTIONS ===== */
 main{
-  background:var(--gray);
-  padding:100px 24px;
+  max-width:1100px;
+  margin:auto;
+  padding:100px 32px;
 }
 
 .program-section{
-  max-width:1100px;
-  margin:auto;
-  margin-bottom:80px;
-  background:white;
-  padding:60px;
-  border-radius:6px;
-  box-shadow:0 20px 60px rgba(0,0,0,.08);
-  position:relative;
-}
-
-.program-section::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:6px;
-  height:100%;
-  background:linear-gradient(
-    to bottom,
-    #0055a4,
-    #ffffff,
-    #ef4135
-  );
-  border-radius:6px 0 0 6px;
+  margin-bottom:90px;
 }
 
 .program-section h2{
   font-size:34px;
   margin-bottom:20px;
+  position:relative;
 }
 
-.program-section ul{
-  margin-left:20px;
+.program-section h2::before{
+  content:"";
+  width:50px;
+  height:4px;
+  background:linear-gradient(90deg,#0055a4,#ef4135);
+  display:block;
+  margin-bottom:14px;
 }
 
-.program-section li{
-  font-size:17px;
+.program-section p{
+  font-size:18px;
   line-height:1.7;
-  margin-bottom:12px;
+  color:#333;
+  max-width:900px;
 }
 
 /* ===== FOOTER ===== */
 footer{
-  background:#f1f1f1;
+  background:#f4f4f4;
   padding:40px;
   text-align:center;
   font-size:13px;
@@ -201,8 +155,7 @@ footer{
 /* MOBILE */
 @media(max-width:900px){
   nav ul{display:none;}
-  header h1{font-size:36px;}
-  .program-section{padding:40px 24px;}
+  header h1{font-size:34px;}
 }
 </style>
 </head>
@@ -210,14 +163,15 @@ footer{
 <body>
 
 <!-- NAV -->
-<nav id="navbar">
+<nav>
   <div class="logo">
-    <img src="logo-vr.png" alt="Voie Républicaine">
+    <a href="index.html">
+      <img src="logo-vr.png" alt="Voie Républicaine">
+    </a>
   </div>
 
   <ul>
     <li><a href="index.html">Accueil</a></li>
-    <li><a href="index.html#mouvement">Le Mouvement</a></li>
     <li><a href="programme.html">Programme</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
@@ -231,90 +185,80 @@ footer{
 
 <!-- HERO -->
 <header>
-  <h1>Notre programme</h1>
+  <h1>Le programme de Voie Républicaine</h1>
   <p>
-    Une France juste, ferme et responsable.
-    Des droits, mais aussi des devoirs.
+    Une France juste, responsable et souveraine,  
+    où la loi est respectée et le travail valorisé.
   </p>
-
-  <div class="header-band">
-    <span class="blue"></span>
-    <span class="white"></span>
-    <span class="red"></span>
-  </div>
 </header>
 
-<!-- CONTENU -->
+<!-- CONTENT -->
 <main>
 
-  <section class="program-section">
-    <h2>⚖️ Justice ferme, rapide et égale</h2>
-    <ul>
-      <li>Même loi pour tous, sans exception</li>
-      <li>Peines réellement appliquées</li>
-      <li>Justice plus rapide pour éviter l’impunité</li>
-      <li>Protection renforcée des victimes</li>
-    </ul>
-  </section>
+  <div class="program-section">
+    <h2>⚖️ Justice ferme et égale</h2>
+    <p>
+      La loi doit être la même pour tous, sans exception.
+      Les peines doivent être réellement appliquées et exécutées.
+      La justice doit être plus rapide, plus ferme et toujours du côté des victimes.
+      Les crimes graves appellent des sanctions exemplaires.
+    </p>
+  </div>
 
-  <section class="program-section">
+  <div class="program-section">
     <h2>👮 Sécurité et ordre républicain</h2>
-    <ul>
-      <li>Tolérance zéro pour les trafics et violences</li>
-      <li>Présence de l’État sur tout le territoire</li>
-      <li>Police respectée et responsable</li>
-      <li>Fin des zones de non-droit</li>
-    </ul>
-  </section>
+    <p>
+      La sécurité est un droit fondamental.
+      Tolérance zéro pour les violences, les trafics et les zones de non-droit.
+      L’État doit être présent partout sur le territoire.
+      La République ne recule devant aucun territoire.
+    </p>
+  </div>
 
-  <section class="program-section">
-    <h2>💼 Travail et dignité</h2>
-    <ul>
-      <li>Le travail doit toujours payer plus que l’assistanat</li>
-      <li>Aides sociales ciblées et contrôlées</li>
-      <li>Valorisation des métiers essentiels</li>
-      <li>Lutte contre les abus</li>
-    </ul>
-  </section>
+  <div class="program-section">
+    <h2>💼 Le travail au cœur du modèle social</h2>
+    <p>
+      Travailler doit toujours permettre de vivre dignement.
+      Les aides sociales doivent être justes, ciblées et conditionnées.
+      Le mérite, l’effort et l’engagement doivent être récompensés.
+      Le travail est la première source de dignité.
+    </p>
+  </div>
 
-  <section class="program-section">
+  <div class="program-section">
+    <h2>💰 Gestion responsable de l’argent public</h2>
+    <p>
+      L’argent public appartient aux Français.
+      L’État doit réduire le gaspillage et concentrer ses moyens
+      sur les priorités essentielles : sécurité, justice, santé, école.
+      Protéger l’avenir des jeunes impose une gestion responsable.
+    </p>
+  </div>
+
+  <div class="program-section">
     <h2>🌍 Immigration contrôlée et juste</h2>
-    <ul>
-      <li>Immigration légale, encadrée et utile</li>
-      <li>Intégration par le travail et le respect des lois</li>
-      <li>Refus de l’immigration illégale</li>
-      <li>Aucune complaisance envers les abus</li>
-    </ul>
-  </section>
+    <p>
+      L’immigration doit être strictement légale, contrôlée et maîtrisée.
+      L’intégration, le respect des lois et des valeurs de la République
+      sont non négociables.
+      Refus clair de l’immigration illégale et des abus du système.
+    </p>
+  </div>
+
+  <div class="program-section">
+    <h2>🗳️ Pouvoir citoyen et stabilité de l’État</h2>
+    <p>
+      Les citoyens doivent être davantage écoutés sur les grandes orientations.
+      L’État doit garantir la stabilité, la continuité et l’intérêt général.
+      La démocratie doit rester responsable et protectrice.
+    </p>
+  </div>
 
 </main>
 
 <footer>
-  © 2026 — Voie Républicaine · Programme politique officiel
+  © 2026 — Voie Républicaine · Programme officiel
 </footer>
-
-<script>
-let lastScroll = 0;
-const nav = document.getElementById("navbar");
-
-window.addEventListener("scroll", () => {
-  const current = window.pageYOffset;
-
-  if(current > lastScroll && current > 100){
-    nav.classList.add("hidden");
-  }else{
-    nav.classList.remove("hidden");
-  }
-
-  if(current > 50){
-    nav.classList.add("scrolled");
-  }else{
-    nav.classList.remove("scrolled");
-  }
-
-  lastScroll = current;
-});
-</script>
 
 </body>
 </html>
