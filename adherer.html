@@ -3,102 +3,278 @@
 <head>
 <meta charset="UTF-8">
 <title>Adhérer – Voie Républicaine</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --blue:#0b1c2d;
+  --red:#c1121f;
+  --white:#ffffff;
+}
+
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
   font-family:'Inter', sans-serif;
 }
 
 body{
-  background:#0b1c2d;
-  color:white;
+  background:var(--white);
+  color:var(--blue);
 }
 
-section{
-  max-width:600px;
-  margin:auto;
-  padding:100px 24px;
-}
-
-h1{
-  font-size:42px;
-  margin-bottom:10px;
-}
-
-p{
-  font-size:18px;
-  margin-bottom:40px;
-  opacity:.9;
-}
-
-/* FORM */
-form{
-  background:white;
-  color:#111;
-  padding:30px;
-  border-radius:8px;
-}
-
-input, button{
+/* ===== NAV BAR (IDENTIQUE ACCUEIL) ===== */
+nav{
+  position:fixed;
+  top:0;
   width:100%;
-  padding:14px;
-  margin-bottom:16px;
-  font-size:15px;
-  border-radius:4px;
+  background:transparent;
+  padding:16px 32px 12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  transition:.4s;
 }
 
-input{
-  border:1px solid #ccc;
+nav.scrolled{
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(6px);
 }
 
-button{
-  background:#0b1c2d;
+nav.hidden{
+  transform:translateY(-120%);
+}
+
+.logo img{
+  height:80px;
+  cursor:pointer;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:28px;
+}
+
+nav ul li a{
+  text-decoration:none;
   color:white;
-  border:none;
   font-weight:600;
+  font-size:14px;
+}
+
+nav.scrolled ul li a{
+  color:var(--blue);
+}
+
+/* TRICOLORE */
+.tricolor{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:4px;
+  display:flex;
+}
+.tricolor span{flex:1;}
+.tricolor .blue{background:#0055a4;}
+.tricolor .white{background:#ffffff;}
+.tricolor .red{background:#ef4135;}
+
+/* ===== HERO ADHESION ===== */
+header{
+  min-height:100vh;
+  background:
+    linear-gradient(120deg, rgba(11,28,45,.9), rgba(193,18,31,.8)),
+    url("https://images.unsplash.com/photo-1520975916090-3105956dac38") center/cover no-repeat;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 24px;
+  text-align:center;
+}
+
+.hero{
+  max-width:700px;
+  animation:fadeUp 1.2s ease;
+}
+
+.hero h1{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:20px;
+  opacity:.95;
+  margin-bottom:40px;
+}
+
+/* ===== FORM ===== */
+.form-box{
+  background:white;
+  padding:40px;
+  border-radius:6px;
+  color:var(--blue);
+  box-shadow:0 20px 50px rgba(0,0,0,.3);
+}
+
+.form-box h2{
+  margin-bottom:20px;
+}
+
+.form-box input{
+  width:100%;
+  padding:14px 16px;
+  margin-bottom:20px;
+  border:1px solid #ccc;
+  font-size:15px;
+}
+
+.form-box button{
+  width:100%;
+  padding:16px;
+  background:linear-gradient(90deg,#0055a4,#ef4135);
+  border:none;
+  color:white;
+  font-weight:700;
+  letter-spacing:1px;
+  font-size:15px;
   cursor:pointer;
   transition:.3s;
 }
 
-button:hover{
-  background:#102a44;
+.form-box button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
-.small{
-  font-size:12px;
-  color:#555;
-  margin-top:10px;
+/* ===== MESSAGE ===== */
+.engagement{
+  padding:100px 24px;
+  max-width:900px;
+  margin:auto;
   text-align:center;
+}
+
+.engagement::before{
+  content:"";
+  display:block;
+  width:90px;
+  height:4px;
+  margin:0 auto 30px;
+  background:linear-gradient(90deg,#0055a4,#ffffff,#ef4135);
+}
+
+.engagement p{
+  font-size:22px;
+  font-weight:600;
+  line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+  background:#f4f4f4;
+  padding:40px;
+  text-align:center;
+  font-size:13px;
+  color:#555;
+}
+
+/* ANIM */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav ul{display:none;}
+  .hero h1{font-size:34px;}
 }
 </style>
 </head>
 
 <body>
 
-<section>
-  <h1>Adhérer à Voie Républicaine</h1>
-  <p>Rejoignez le mouvement républicain, souverain et populaire.</p>
+<!-- NAV -->
+<nav id="navbar">
+  <div class="logo">
+    <a href="index.html">
+      <img src="logo-vr.png" alt="Voie Républicaine">
+    </a>
+  </div>
 
-  <!-- FORMULAIRE FORMSPREE -->
-  <form action="https://formspree.io/f/xjggkkad" method="POST">
-    <input type="text" name="nom" placeholder="Nom et prénom" required>
-    <input type="email" name="email" placeholder="Adresse email" required>
-    <input type="text" name="ville" placeholder="Ville">
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="programme.html">Programme</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 
-    <button type="submit">Rejoindre le mouvement</button>
+  <div class="tricolor">
+    <span class="blue"></span>
+    <span class="white"></span>
+    <span class="red"></span>
+  </div>
+</nav>
 
-    <div class="small">
-      En vous inscrivant, vous acceptez de recevoir des informations de Voie Républicaine.
-    </div>
-  </form>
+<!-- HERO -->
+<header>
+  <div class="hero">
+    <h1>Rejoignez Voie Républicaine</h1>
+    <p>
+      Engagez-vous pour une France juste,<br>
+      forte et fidèle à ses valeurs.
+    </p>
 
+    <!-- FORMULAIRE (Formspree possible) -->
+    <form class="form-box" action="https://formspree.io/f/xjggkkad" method="POST">
+      <h2>Adhésion citoyenne</h2>
+      <input type="email" name="email" placeholder="Votre adresse email" required>
+      <button type="submit">J’ADHÈRE AU MOUVEMENT</button>
+    </form>
+  </div>
+</header>
+
+<!-- ENGAGEMENT -->
+<section class="engagement">
+  <p>
+    « S’engager, ce n’est pas protester.<br>
+    C’est construire la République de demain. »
+  </p>
 </section>
+
+<footer>
+  © 2026 — Voie Républicaine · Mouvement politique républicain
+</footer>
+
+<script>
+let lastScroll = 0;
+const nav = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+  const current = window.pageYOffset;
+
+  if(current > lastScroll && current > 100){
+    nav.classList.add("hidden");
+  }else{
+    nav.classList.remove("hidden");
+  }
+
+  if(current > 50){
+    nav.classList.add("scrolled");
+  }else{
+    nav.classList.remove("scrolled");
+  }
+
+  lastScroll = current;
+});
+</script>
 
 </body>
 </html>
